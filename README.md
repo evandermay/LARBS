@@ -7,7 +7,7 @@ On an Arch based distribution as root, run the following:
 
 ```
 git clone https://evandermay/LARBS
-sudo make clean install
+cd larbs
 sh larbs.sh
 ```
 
