@@ -93,7 +93,7 @@ gitmakeinstall() {
 	progname="$(basename "$1" .git)"
 	dir="$repodir/$progname"
 	dialog --title "LARBS Installation" --infobox "Installing \`$progname\` ($n of $total) via \`git\` and \`make\`. $(basename "$1") $2" 5 70
-	sudo -u "$name" git clone --depth 1 "$1" "$dir" >/dev/null 2>&1 || { cd "$dir" || return 1 ; sudo -u "$name" git pull --force origin master;}
+	sudo -u "$name" git clone "$1" "$dir" >/dev/null 2>&1 || { cd "$dir" || return 1 ;}
 	cd "$dir" || exit 1
 	make >/dev/null 2>&1
 	make install >/dev/null 2>&1
@@ -135,6 +135,10 @@ putgitrepo() { # Downloads a gitrepo $1 and places the files in $2 only overwrit
 	sudo -u "$name" git clone --recursive -b "$branch" --depth 1 "$1" "$dir" >/dev/null 2>&1
 	sudo -u "$name" cp -rfT "$dir" "$2"
 	}
+
+installstarship() { dialog --infobox "Installing Starship Prompt" 10 50
+	curl -fsSL https://starship.rs/install.sh | bash 
+ 	}
 
 systembeepoff() { dialog --infobox "Getting rid of that error beep sound..." 10 50
 	rmmod pcspkr
@@ -218,7 +222,7 @@ git update-index --assume-unchanged "/home/$name/README.md" "/home/$name/LICENSE
 systembeepoff
 
 # Sets Starship prompt 
-curl -fsSL https://starship.rs/install.sh | bash 
+installstarship
 
 # dbus UUID must be generated for Artix runit.
 dbus-uuidgen > /var/lib/dbus/machine-id
