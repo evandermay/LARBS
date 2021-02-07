@@ -136,7 +136,7 @@ putgitrepo() { # Downloads a gitrepo $1 and places the files in $2 only overwrit
 	sudo -u "$name" cp -rfT "$dir" "$2"
 	}
 
-systembeepoff() { dialog --infobox "Getting rid of that retarded error beep sound..." 10 50
+systembeepoff() { dialog --infobox "Getting rid of that error beep sound..." 10 50
 	rmmod pcspkr
 	echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf ;}
 
