@@ -139,6 +139,10 @@ putgitrepo() { # Downloads a gitrepo $1 and places the files in $2 only overwrit
 installstarship() { dialog --infobox "Installing Starship Prompt" 10 50
 	curl -fsSL https://starship.rs/install.sh | bash 
  	}
+	
+chmodlocal() { dialog --infobox "Installing Scripts" 10 50
+	chmod a+x .local/bin 
+ 	}
 
 systembeepoff() { dialog --infobox "Getting rid of that error beep sound..." 10 50
 	rmmod pcspkr
@@ -223,6 +227,8 @@ systembeepoff
 
 # Sets Starship prompt 
 installstarship
+
+chmodlocal
 
 # dbus UUID must be generated for Artix runit.
 dbus-uuidgen > /var/lib/dbus/machine-id
