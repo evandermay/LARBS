@@ -146,7 +146,7 @@ chmodlocal() { dialog --infobox "Installing Scripts" 10 50
 
 lockscreen() {dialog --infobox "Setting Lockscreen"
 	betterlockscreen -u /home/"$name"/.local/share/bg
-
+	}
 systembeepoff() { dialog --infobox "Getting rid of that error beep sound..." 10 50
 	rmmod pcspkr
 	echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf ;}
