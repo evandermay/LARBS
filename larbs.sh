@@ -144,7 +144,7 @@ chmodlocal() { dialog --infobox "Installing Scripts" 10 50
 	chmod a+x .local/bin 
  	}
 
-lockscreen() {dialog --infobox "Setting Lockscreen"
+lockscreen() { dialog --infobox "Setting Lockscreen" 10 50
 	betterlockscreen -u /home/"$name"/.local/share/bg
 	}
 systembeepoff() { dialog --infobox "Getting rid of that error beep sound..." 10 50
