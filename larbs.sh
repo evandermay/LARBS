@@ -57,7 +57,7 @@ preinstallmsg() { \
 adduserandpass() { \
 	# Adds user `$name` with password $pass1.
 	dialog --infobox "Adding user \"$name\"..." 4 50
-	useradd -m -g wheel -s /bin/zsh "$name" >/dev/null 2>&1 ||
+	useradd -m -g wheel -s /bin/fish "$name" >/dev/null 2>&1 ||
 	usermod -a -G wheel "$name" && mkdir -p /home/"$name" && chown "$name":wheel /home/"$name"
 	repodir="/home/$name/.local/src"; mkdir -p "$repodir"; chown -R "$name":wheel "$(dirname "$repodir")"
 	echo "$name:$pass1" | chpasswd
@@ -143,6 +143,9 @@ installstarship() { dialog --infobox "Installing Starship Prompt" 10 50
 chmodlocal() { dialog --infobox "Installing Scripts" 10 50
 	chmod a+x .local/bin 
  	}
+
+lockscreen() {dialog --infobox "Setting Lockscreen"
+	betterlockscreen -u /home/"$name"/.local/share/bg
 
 systembeepoff() { dialog --infobox "Getting rid of that error beep sound..." 10 50
 	rmmod pcspkr
