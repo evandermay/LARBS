@@ -228,6 +228,9 @@ git update-index --assume-unchanged "/home/$name/README.md" "/home/$name/LICENSE
 # Most important command! Get rid of the beep!
 systembeepoff
 
+# Make zsh the default shell for the user.
+chsh -s /bin/fish "$name" >/dev/null 2>&1
+
 # Sets Starship prompt 
 installstarship
 
@@ -235,6 +238,7 @@ chmodlocal
 
 # dbus UUID must be generated for Artix runit.
 dbus-uuidgen > /var/lib/dbus/machine-id
+
 
 # Tap to click
 [ ! -f /etc/X11/xorg.conf.d/40-libinput.conf ] && printf 'Section "InputClass"
